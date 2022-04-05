@@ -36,20 +36,27 @@ for peaks and valleys. These can be used for edge detection, segmentation, and o
 operations.
 
 1.1 Histogram Equalization
+
 Histogram equalization is a technique in image processing of contrast adjustment
 using image’s histogram. This method increases the global contrast of the image.
 Histogram equalization accomplishes this by effectively spreading out the highly
 populated intensity values which are used to degrade image contrast.
 
 Steps to Equalize histogram:
+
 a) The color image is split into three channels using cv2.split(). Each channel is
 processed individually.
+
 b) Calculate the Probability Mass Function (PMF) of the image pixels from the
 histogram.
+
 c) Calculate the cumulative Distribution function (CDF) for the pixel intensities.
+
 d) Multiply the CDF by the (max intensity value -1) to get the new CDF values.
+
 e) Multiply the original intensity values by the new CDF and map them over the
 entire image.
+
 f) The three equalized channels are then merged into color image using
 cv2.merge().
 
@@ -64,7 +71,9 @@ histogram equalization (CLAHE) is used which prevents this overamplification.
 Steps for CLAHE:
 
 a) The image is divided into 8x8 grid. And each tile is equalized separately.
+
 b) This follows the same procedure as above except for one step.
+
 c) Before the new CDF is calculated, the peaks in the histograms are clipped at a
 certain threshold and then distributed evenly among other pixels.
 
